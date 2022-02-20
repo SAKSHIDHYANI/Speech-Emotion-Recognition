@@ -25,9 +25,9 @@ def wave_plot(data,sampling_rate):
 def prediction(data,sampling_rate):
     dict_values = {0:"neutral",1:"calm",2:"happy",3:"sad",4:"angry",5:"fear",6:"disgust",7:"pleasant surprise"}
     
-    d = os.path.dirname(os.getcwd())
-    path = d+"//Emotion_Recognition//models//CnnModel.h5"
-    #path = "\\models\\CnnModel.h5"
+    
+    
+    path = "models/CnnModel.h5"
     cnn_model = load_model(path)
     arr=[] 
     mfccs = np.mean(librosa.feature.mfcc(y=data, sr=sampling_rate, n_mfcc=40).T,axis=0) 
@@ -42,9 +42,8 @@ def prediction(data,sampling_rate):
 
 def prediction_mlp(data,sampling_rate):
     dict_values = {0:"neutral",1:"calm",2:"happy",3:"sad",4:"angry",5:"fear",6:"disgust",7:"pleasant surprise"}
-    d = os.path.dirname(os.getcwd())
-    path = d+"//Emotion_Recognition//models//MLP_model.pkl"
-    #path = "\\models\\MLP_model.pkl"
+    path = "models/MLP_model.pkl"
+    
     MLP_model = joblib.load(open(path,"rb"))
     arr=[] 
     mfccs = np.mean(librosa.feature.mfcc(y=data, sr=sampling_rate, n_mfcc=40).T,axis=0) 
