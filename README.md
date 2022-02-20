@@ -18,8 +18,8 @@ File name Identifiers:
 •	Repetition (01 = 1st repetition, 02 = 2nd repetition).
 •	Actor (01 to 24. Odd numbered actors are male, even numbered actors are female).
 
-
-**Extraction of features for audio files using Mel Frequency Cepstral Coefficients: **
+**
+Extraction of features for audio files using Mel Frequency Cepstral Coefficients**
 
 •	The RAVDESS and TESS datasets were used to create combined dataset. Then, the features were extracted for all the audio files using MFCC. Mel-frequency cepstral coefficients (MFCC) includes following steps:
 
