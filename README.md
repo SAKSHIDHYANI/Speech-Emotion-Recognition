@@ -24,22 +24,26 @@ File name Identifiers:
 The RAVDESS and TESS datasets were used to create combined dataset. Then, the features were extracted for all the audio files using MFCC. Mel-frequency cepstral coefficients (MFCC) includes following steps:
 
 	**A/D Conversion**: It converts the analog signal into discrete space.
+
 	**Pre-emphasis**: It boosts the amount of energy in higher frequencies. Boosting the high-frequency energy makes information in higher formants more available to the acoustic model. Filter is used to boost the amount of energy in higher frequencies.  
+
 	**Windowing**: It involves slicing of waveform for audio into sliding frames. For slicing, the amplitude needs to gradually drop off at the edge of the frame. Hamming or hanning window can be used for windowing. 
 
 	**DFT (Discrete fourier Transform (DFT)**: Used to extract information in the frequency domain.
  
 	**Mel Filter bank**: Mel scale is used to map the actual frequency to the frequency that the humans will perceive.
 
- 	**Applying log**: Log function is applied to Mel filter output to mimic the human hearing system. At a low value of input log function gradient will be higher and at high value of input log function, function gradient will be lower which kind of similar to how humans perceive sound.
+	**Applying log**: Log function is applied to Mel filter output to mimic the human hearing system. At a low value of input log function gradient will be higher and at high value of input log function, function gradient will be lower which kind of similar to how humans perceive sound.
+
 	**IDFT**: Inverse transformation to the output in the previous step, is applied. The periods in the time domain and frequency domain are inverted after the transformations. So, the frequency domain’s fundamental frequency with the lowest frequency will have the highest frequency in the time domain. The inverse of the log of the magnitude of the signal is called a cepstrum.
+
 	The MFCC model takes the first 12 coefficients of the signal after applying the IDFT operations. Energy of signal sample is also considered as feature, which helps in identifying the phones.  
 
 Along with these 13 features, the MFCC technique will consider the first order derivative and second order derivatives of the features which constitute another 26 features. Overall, MFCC technique will generate 39 features from each audio signal sample which are used as input for the speech recognition model.
 
 
 
-**Exploratory Data Analysis **
+**Exploratory Data Analysis**
 
 •	Plotting waveform for some random audio files
 •	Visualizing MFCC transformation for some audio files
@@ -48,7 +52,7 @@ Along with these 13 features, the MFCC technique will consider the first order d
 
 **Models Implementation**
 
-•	Models used: 
+
 **SVC – Support Vector Classifier:**
 
 SVM is supervised machine learning algorithm used for classification, regression and outlier detection as well. SVM has classifications: SVC, NuSVC, LinearSVC. The       implementation of SVC is based on libsvm. It provides best fit hyperplane to categorize the data. The multiclass support is handled according to a one-vs-one scheme.  
