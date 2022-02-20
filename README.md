@@ -3,7 +3,7 @@
 
 **Data Description:**
 
-•	Combined data from RAVDESS speech and song datasets and Toronto emotional speech set. Data sets available in Kaggle:
+Combined data from RAVDESS speech and song datasets and Toronto emotional speech set. Data sets available in Kaggle:
 
 **TESS Data**: https://www.kaggle.com/ejlok1/toronto-emotional-speech-set-tess : There are a set of 200 target words were spoken in the carrier phrase "Say the word _' by two actresses (aged 26 and 64 years) and recordings were made of the set portraying each of seven emotions (anger, disgust, fear, happiness, pleasant surprise, sadness, and neutral). There are 2800 data points (audio files) in total.
 The dataset is organised such that each of the two female actor and their emotions are contain within its own folder. And within that, all 200 target words audio file can be found. The format of the audio file is a WAV format.
@@ -18,21 +18,21 @@ File name Identifiers:
 •	Repetition (01 = 1st repetition, 02 = 2nd repetition).
 •	Actor (01 to 24. Odd numbered actors are male, even numbered actors are female).
 
-**
-Extraction of features for audio files using Mel Frequency Cepstral Coefficients**
 
-•	The RAVDESS and TESS datasets were used to create combined dataset. Then, the features were extracted for all the audio files using MFCC. Mel-frequency cepstral coefficients (MFCC) includes following steps:
+**Extraction of features for audio files using Mel Frequency Cepstral Coefficients**
 
-	A/D Conversion: It converts the analog signal into discrete space.
-	Pre-emphasis: It boosts the amount of energy in higher frequencies. Boosting the high-frequency energy makes information in higher formants more available to the acoustic model. Filter is used to boost the amount of energy in higher frequencies.  
-	Windowing: It involves slicing of waveform for audio into sliding frames. For slicing, the amplitude needs to gradually drop off at the edge of the frame. Hamming or hanning window can be used for windowing. 
+The RAVDESS and TESS datasets were used to create combined dataset. Then, the features were extracted for all the audio files using MFCC. Mel-frequency cepstral coefficients (MFCC) includes following steps:
 
-	DFT (Discrete fourier Transform (DFT): Used to extract information in the frequency domain.
+	**A/D Conversion**: It converts the analog signal into discrete space.
+	**Pre-emphasis**: It boosts the amount of energy in higher frequencies. Boosting the high-frequency energy makes information in higher formants more available to the acoustic model. Filter is used to boost the amount of energy in higher frequencies.  
+	**Windowing**: It involves slicing of waveform for audio into sliding frames. For slicing, the amplitude needs to gradually drop off at the edge of the frame. Hamming or hanning window can be used for windowing. 
+
+	**DFT (Discrete fourier Transform (DFT)**: Used to extract information in the frequency domain.
  
-	Mel Filter bank: Mel scale is used to map the actual frequency to the frequency that the humans will perceive.
+	**Mel Filter bank**: Mel scale is used to map the actual frequency to the frequency that the humans will perceive.
 
- 	Applying log: Log function is applied to Mel filter output to mimic the human hearing system. At a low value of input log function gradient will be higher and at high value of input log function, function gradient will be lower which kind of similar to how humans perceive sound.
-	IDFT: Inverse transformation to the output in the previous step, is applied. The periods in the time domain and frequency domain are inverted after the transformations. So, the frequency domain’s fundamental frequency with the lowest frequency will have the highest frequency in the time domain. The inverse of the log of the magnitude of the signal is called a cepstrum.
+ 	**Applying log**: Log function is applied to Mel filter output to mimic the human hearing system. At a low value of input log function gradient will be higher and at high value of input log function, function gradient will be lower which kind of similar to how humans perceive sound.
+	**IDFT**: Inverse transformation to the output in the previous step, is applied. The periods in the time domain and frequency domain are inverted after the transformations. So, the frequency domain’s fundamental frequency with the lowest frequency will have the highest frequency in the time domain. The inverse of the log of the magnitude of the signal is called a cepstrum.
 	The MFCC model takes the first 12 coefficients of the signal after applying the IDFT operations. Energy of signal sample is also considered as feature, which helps in identifying the phones.  
 
 Along with these 13 features, the MFCC technique will consider the first order derivative and second order derivatives of the features which constitute another 26 features. Overall, MFCC technique will generate 39 features from each audio signal sample which are used as input for the speech recognition model.
@@ -45,20 +45,21 @@ Along with these 13 features, the MFCC technique will consider the first order d
 •	Visualizing MFCC transformation for some audio files
 •	Bar graph to visualize the count of various emotions
 
+
 **Models Implementation**
 
 •	Models used: 
-	SVC – Support Vector Classifier:
+**SVC – Support Vector Classifier:**
 
 SVM is supervised machine learning algorithm used for classification, regression and outlier detection as well. SVM has classifications: SVC, NuSVC, LinearSVC. The       implementation of SVC is based on libsvm. It provides best fit hyperplane to categorize the data. The multiclass support is handled according to a one-vs-one scheme.  
 
-	CNN – Convolutional Neural Network: Class of deep neural network:
+	**CNN – Convolutional Neural Network: Class of deep neural network:
 
 Convolutional neural networks are distinguished from other neural networks by their superior performance with image, speech, or audio signal inputs. They have three main types of layers: 
 Convolutional layer, pooling layer and fully-connected layer.
 The convolutional layer is the first layer of a convolutional network. While convolutional layers can be followed by additional convolutional layers or pooling layers, the fully-connected layer is the final layer. The convolutional layer is the core building block of a CNN, and it is where the majority of computation occurs.
 
-	MLP – Multilayer Perceptron: Class of feed forward artificial neural network
+	**MLP – Multilayer Perceptron: Class of feed forward artificial neural network
 
 MLP Classifier stands for Multi-layer Perceptron classifier. MLP is a feedforward artificial neural network model that maps input data sets to a set of appropriate outputs. An MLP consists of multiple layers and each layer is fully connected to the following one. The nodes of the layers are neurons with nonlinear activation functions, except for the nodes of the input layer. Between the input and the output layer there may be one or more nonlinear hidden layers.
 
