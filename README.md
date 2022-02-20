@@ -53,21 +53,25 @@ Along with these 13 features, the MFCC technique will consider the first order d
 
 SVM is supervised machine learning algorithm used for classification, regression and outlier detection as well. SVM has classifications: SVC, NuSVC, LinearSVC. The       implementation of SVC is based on libsvm. It provides best fit hyperplane to categorize the data. The multiclass support is handled according to a one-vs-one scheme.  
 
-	**CNN – Convolutional Neural Network: Class of deep neural network:
+	**CNN – Convolutional Neural Network: Class of deep neural network:**
 
 Convolutional neural networks are distinguished from other neural networks by their superior performance with image, speech, or audio signal inputs. They have three main types of layers: 
 Convolutional layer, pooling layer and fully-connected layer.
 The convolutional layer is the first layer of a convolutional network. While convolutional layers can be followed by additional convolutional layers or pooling layers, the fully-connected layer is the final layer. The convolutional layer is the core building block of a CNN, and it is where the majority of computation occurs.
 
-	**MLP – Multilayer Perceptron: Class of feed forward artificial neural network
+	**MLP – Multilayer Perceptron: Class of feed forward artificial neural network**
 
 MLP Classifier stands for Multi-layer Perceptron classifier. MLP is a feedforward artificial neural network model that maps input data sets to a set of appropriate outputs. An MLP consists of multiple layers and each layer is fully connected to the following one. The nodes of the layers are neurons with nonlinear activation functions, except for the nodes of the input layer. Between the input and the output layer there may be one or more nonlinear hidden layers.
 
 
 •	Standardization of data to improve score in both models.
+
 •	Evaluating score for training and testing data for both the models
+
 •	Applying early stopping to balance the number of epochs and reduce overfitting in the models.
+
 •	Accuracy plot and Loss plot for training and testing data for different number of epochs.
+
 •	Saving models for further use
 
 **Testing audio data**
